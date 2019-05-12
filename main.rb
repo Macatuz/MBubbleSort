@@ -5,14 +5,11 @@ def bubble_sort(arr)
       Switch(i, i + 1, arr) if arr[i] > arr[i + 1]
     end
   end
-  return arr
+  arr
 end
 
 def Switch(indexA, indexB, arr)
-  valueA = arr[indexA]
-  valueB = arr[indexB]
-  arr[indexA] = valueB
-  arr[indexB] = valueA
+  indexA, indexB = indexB, indexA
 end
 
 def isSorted(arr)
@@ -22,7 +19,7 @@ def isSorted(arr)
     break if arr[i] < arr[i - 1]
     isSorted += 1
   end
-  return isSorted == arr.count - 1
+  isSorted == arr.count - 1
 end
 
 def isStringSorted(arr)
@@ -32,12 +29,12 @@ def isStringSorted(arr)
     break if arr[i].length < arr[i - 1].length
     isSorted += 1
   end
-  return isSorted == arr.count - 1
+  isSorted == arr.count - 1
 end
 
 def bubble_sort_by(arr)
   if block_given?
-    while (!isStringSorted(arr))
+    while (!isStringSorted (arr))
       for i in 0..(arr.count - 1)
         next if i === 0
         if yield(arr[i - 1], arr[i]) > 0
